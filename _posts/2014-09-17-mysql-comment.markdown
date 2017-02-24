@@ -7,8 +7,7 @@ categories: MySQL
 
 #### 1 创建表的时候写注释
 
-<pre><code>
-create table {TableName}
+<pre><code>create table {TableName}
 (
   field_name int comment '字段的注释'
 ) comment='表的注释';
@@ -22,14 +21,12 @@ alter table {TableName} comment '修改后的表的注释';
 
 #### 3 修改字段的注释
 
-<code>
--- 注意：字段名和字段类型照写就行  
+<pre><code>-- 注意：字段名和字段类型照写就行  
 alter table {TableName} modify column field_name int comment '修改后的字段注释';
 </code></pre>
 
 #### 4 查看表注释的方法
-<code>
--- 在生成的SQL语句中看  
+<pre><code>-- 在生成的SQL语句中看  
 show create table {TableName};
 </code></pre>
 
