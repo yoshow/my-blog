@@ -3,16 +3,17 @@
 注：这里默认安装环境已具备Ruby、RubyGems环境。
 
 安装 Jekyll
-# gem install jekyll
+<code># gem install jekyll</code>
 
 创建新的网站
-# jekyll new my-blog
-# cd my-blog
+<code># jekyll new my-blog
+# cd my-blog</code>
 
 启动测试服务器
 
-切换到站点的根目录执行如下文件
-# jekyll serve
+切换到站点的根目录执行如下命令
+<code># jekyll serve</code>
+
 访问 http://localhost:4000 可以查看测试内容
 
 结合 Github Pages 使用 Jekyll
@@ -126,8 +127,7 @@ html页面。
 在 Github 中的 User Site Repo 根目录（即 Github 中 Jekyll 目录的根目录）下创建CNAME目录，内容为你的个性域名，格式为 www.yourdomain.com 即可。
 然后在域名管理系统中解析域名，添加CNAME记录，服务器为username.github.io。等待一个多小时后，就可以使用自己的域名访问了。
 
-
-相关链接
+**相关链接**
 http://jekyllrb.com/
 http://jekyllthemes.org/
 http://www.thxopen.com/jekyll/2014/04/25/i-and-jekyll.html
