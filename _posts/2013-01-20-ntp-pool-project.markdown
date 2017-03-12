@@ -9,14 +9,11 @@ categories: NTP Windows
 
 将 Windows 的 NTP 服务器设置为 cn.pool.ntp.org。
 
-具体设置方法参考:
+具体设置方法参考: [Windows NTP 客户端时间同步设置](/ntp/windows/2012/12/22/windows-ntp-client-setting.html)  
 
-
-然后需要重启 w32time 服务
-执行命令行
-<code>net stop w32time;</code>
-然后再执行
-<code>net start w32time;</code>
+然后需要重启 w32time 服务  
+执行命令行 <code>net stop w32time</code>  
+然后再执行 <code>net start w32time</code>  
 
 好了，如果你运气足够好的话，此时在客户端就能进行时钟同步了。
 
