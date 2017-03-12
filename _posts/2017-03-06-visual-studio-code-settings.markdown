@@ -2,7 +2,8 @@
 layout: post
 title:  "Visual Studio Code 配置"
 date:   2017-03-06 20:00:00 +0800
-categories: "Visual Studio Code"
+categories: editor
+tags: editor visualstudio
 ---
 
 我的配置

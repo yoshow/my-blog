@@ -3,6 +3,7 @@ layout: post
 title:  "利用 NTP POOL PROJECT 设置服务器正确的时间"
 date:   2013-01-20 20:00:00 +0800
 categories: NTP Windows 
+tags: ntp
 ---
 
 租用的美国的 VPS, 虽然可以手动设置时间, 但是每次重启后操作系统默认为美国的时间。
