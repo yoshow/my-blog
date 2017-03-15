@@ -1,0 +1,128 @@
+---
+layout: post
+title:  "NuGet 介绍"
+date:   2016-07-01 20:00:00 +0800
+categories: apache maven
+tags: apache maven
+---
+
+创建和发布自己的程序包
+
+1. 在NuGet上注册并获取API Key   
+首先，你需要在NuGet(https://www.nuget.org/)上注册一个新的账号，然后在 My Account 页面，获取一个API Key，这个过程很简单，我就不作说明了。
+
+2.下载NuGet.exe
+NuGet 有个命令行工具：NuGet.exe，非常好用，不过使用之前需要下载，下载地址：https://nuget.org/nuget.exe。
+把下载的 NuGet.exe 放到目录：D:\opt\NuGet 中，为了方便使用，添加此路径环境变量，如何添加环境变量，很简单，再此就不作说明了。
+
+3. 设置API Key
+使用以下命令设置NuGet API Key：nuget setApiKey {my_api_key}，记得把 {my_api_key} 替换为步骤1中获得的 API Key。
+# nuget setApiKey {my_api_key}
+可以看到如下输出
+------------------------------------------------------------------
+已保存 NuGet 库 (https://www.nuget.org) 和 
+符号服务器 (http://nuget.gw.symbolsource.org/Public/NuGet) 的 
+API 密钥“{my_api_key}”。
+------------------------------------------------------------------
+
+4.开发类库并更改程序集配置
+
+打开 AssemblyInfo.cs 文件，将assembly的属性设置好，记得再设置一下AssemblyVersion特性，以指定我们类库的版本。目前我们使用1.0.0.0版本：
+	
+[assembly: AssemblyTitle("AC.Core")]
+[assembly: AssemblyDescription("X3Platform's .net core lib.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("wychuan")]
+[assembly: AssemblyProduct("AC.Core")]
+[assembly: AssemblyCopyright("Copyright © ruanyu 2015")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+ 
+[assembly: ComVisible(false)]
+ 
+[assembly: Guid("fac8fea2-2803-4382-b145-ed5f660bdc58")]
+ 
+[assembly: AssemblyVersion("1.0.0.0")]
+
+全部设置好以后，编译整个项目待用。
+
+5.创建并修改nuspec
+nuspec 是 NuGet 将项目打包成 nupkg 的输入文件，可以通过 nuget spec 命令产生。在命令提示符下，进入 AC.Core.csproj 文件所在目录，然后执行：
+
+# nuget spec
+
+此时会提示创建成功：
+
+clipboard
+
+用记事本打开 AC.Core.nuspec 文件，把需要替换的信息替换掉，不需要的tag全部删掉，注意里面的$xxx$宏，这些就是引用了AssemblyInfo.cs中的设置值，在编译产生package的时候，会使用AssemblyInfo.cs中的相应值进行替换。完成编辑后，我们的nuspec文件如下：
+
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>http://www.wychuan.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>my first init release.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+  </metadata>
+</package>
+
+注意两点：
+1、$description$使用AssemblyDescriptionAttribute的值进行替换，在产生package之前，一定要记得先编译项目，否则会提示$description$找不到的错误；
+2、releaseNotes如果没有，就直接删掉这个节点，如果有，则填入自己的内容，不要使用默认内容，否则会在下一步产生警告信息。
+
+6.产生类库包（Library Package）
+
+同样在Support.csproj路径下，使用下面的命令产生NuGet类库包：
+	
+nuget pack Support.csproj
+
+成功后，提示：
+
+clipboard
+
+注意：由于我们的项目通过 NuGet 引用了 Common.Logging，因此，它将会作为一个依赖组件（dependency）打包到产生的nupkg文件中。
+
+另外，NuGet 会使用默认的项目配置所产生的程序集进行打包。如果项目默认是Debug，而你需要用Release打包，则使用下面的命令：
+
+nuget pack Support.csproj -Prop Configuration=Release
+
+如果此项目引用了解决方案中的其他项目，那么你可以把引用的其他项目作为此程序包的一部分发布，也可以通过使用IncludeReferencedProjects参数来作为依赖项发布。
+	
+nuget pack Support.csproj -Prop Configuration=Release -IncludeReferencedProjects
+
+7.发布类库包
+现在，通过以下命令发布类库包：
+
+nuget push Support.1.0.0.0.nupkg
+
+完成以后，出现以下提示：
+
+8.测试已发布的类库包
+通过UI或者命令来查找一下。
+
+9.更新类库包
+随着类库开发进度不断向前，必然会有版本更新。更新类库包很简单，只需要在 AssemblyInfo.cs 中更新一下版本号，然后重新执行上面的 STEP 6、7 即可。
+注意在执行STEP 7的时候，nupkg的文件名应该使用新版本的文件名。
+
+10.删除类库包
+nuget delete x-collaborative-framework 1.0.0
+
+附.安装包
+nuget install NPOI -OutputDirectory .\lib\ -ExcludeVersion -NonInteractive 
+-OutputDirectory
+-ExcludeVersion
+-NonInteractive
+
+**相关链接**
+http://www.nuget.org/
+http://docs.nuget.org/Create/Creating-and-Publishing-a-Package
+http://www.cnblogs.com/wych/p/4380315.html
+
