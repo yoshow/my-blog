@@ -3,23 +3,24 @@
 *注：这里默认安装环境已具备Ruby、RubyGems环境。*
 
 #### 安装 Jekyll ####   
-<code># gem install jekyll</code>
+<code>gem install jekyll</code>
 
 #### 创建新的网站 ####   
-<code># jekyll new my-blog   
-\# cd my-blog
-</code>
+``` bash
+jekyll new my-blog   
+cd my-blog
+```
 
 #### 启动测试服务器 #### 
 
 切换到站点的根目录执行如下命令  
-<code># jekyll serve</code>
+<code>jekyll serve</code>  
 
 访问 http://localhost:4000 可以查看测试内容
 
 #### 结合 Github Pages 使用 Jekyll ####  
 进入GitRepo目录，键入git init命令，初始化一个git库。  
-<code># cd /Users/yoshow/</code> 
+<code>cd /Users/yoshow/</code>  
 将刚才在 Github 中创建的 Repo 克隆到你本地的Git库中，即刚在本地创建的 GitRepo 目录中。  
 <code>#git clone https://github.com/yoshow/my-blog</code>
 

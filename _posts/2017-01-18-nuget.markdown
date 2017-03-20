@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "NuGet 介绍"
+title:  "NuGet 笔记"
 date:   2016-07-01 20:00:00 +0800
 categories: windows nuget
 tags: windows nuget
@@ -11,11 +11,11 @@ tags: windows nuget
 1.在NuGet上注册并获取API Key   
 首先，你需要在NuGet(https://www.nuget.org/)上注册一个新的账号，然后在 My Account 页面，获取一个API Key，这个过程很简单，我就不作说明了。
 
-2.下载NuGet.exe
+2.下载NuGet.exe  
 NuGet 有个命令行工具：NuGet.exe，非常好用，不过使用之前需要下载，下载地址：https://nuget.org/nuget.exe。
 把下载的 NuGet.exe 放到目录：D:\opt\NuGet 中，为了方便使用，添加此路径环境变量，如何添加环境变量，很简单，再此就不作说明了。
 
-3.设置API Key
+3.设置API Key  
 使用以下命令设置NuGet API Key：nuget setApiKey {my_api_key}，记得把 {my_api_key} 替换为步骤1中获得的 API Key。  
 <code>nuget setApiKey {my_api_key}</code>  
 可以看到如下输出:  
@@ -27,9 +27,9 @@ API 密钥“{my_api_key}”。
 ------------------------------------------------------------------  
 {% endhighlight %}
 
-4. 开发类库并更改程序集配置
+4.开发类库并更改程序集配置  
 
-打开 AssemblyInfo.cs 文件，将assembly的属性设置好，记得再设置一下AssemblyVersion特性，以指定我们类库的版本。目前我们使用1.0.0.0版本：
+打开 AssemblyInfo.cs 文件，将 assembly 的属性设置好，记得再设置一下 AssemblyVersion 特性，以指定我们类库的版本。目前我们使用1.0.0.0版本：
 {% highlight csharp %}
 [assembly: AssemblyTitle("Support")]
 [assembly: AssemblyDescription("X3Platform's .NET core lib.")]
@@ -129,7 +129,7 @@ nuspec 是 NuGet 将项目打包成 nupkg 的输入文件，可以通过 nuget s
 -NonInteractive  
 
 **相关链接**  
-http://www.nuget.org/  
-http://docs.nuget.org/Create/Creating-and-Publishing-a-Package  
-http://www.cnblogs.com/wych/p/4380315.html  
+[http://www.nuget.org/](http://www.nuget.org/)  
+[http://docs.nuget.org/Create/Creating-and-Publishing-a-Package](http://docs.nuget.org/Create/Creating-and-Publishing-a-Package)  
+[http://www.cnblogs.com/wych/p/4380315.html](http://www.cnblogs.com/wych/p/4380315.html)  
 
