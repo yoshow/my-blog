@@ -2,8 +2,8 @@
 layout: post
 title:  "SQL Server Management Studio 清除历史登陆记录"
 date:   2013-01-14 20:00:00 +0800
-categories: SQL Server Management Studio
-tags: sqlserver
+categories: sqlserver Management Studio
+tags: ["SQL Server","SQL Server Management Studio"]
 ---
 删除 <code>C:\Users\Administrator\AppData\Roaming\Microsoft\Microsoft SQL Server\100\Tools\Shell\</code> 下的SqlStudio.bin文件, 然后重启 SQL Server Management Studio 就可以了。
 

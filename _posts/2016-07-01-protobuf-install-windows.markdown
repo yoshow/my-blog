@@ -3,12 +3,13 @@ layout: post
 title:  "Windows 环境下安装 Protobuf"
 date:   2016-07-01 20:00:00 +0800
 categories: google protobuf
-tags: google protobuf
+tags: Google Protobuf
 ---
+
 #### 环境安装 ####  
-1：下载CMake 
-2:打开VS Command Prompt
-3:修改工作目录到目标目录
+1.下载CMake 
+2.打开 VS Command Prompt
+3.修改工作目录到目标目录
 cd C:\Path\to
 4:创建编译完后 protobuf headers/libraries/binaries 将要安装的文件夹
  C:\Path\to>mkdir install
@@ -132,8 +133,8 @@ build项目：
 该错误又由于 生成的类库和当前的项目使用的是不一样的 Runtime Library
 修改如下配置即可: Property-->Configuration Properties-->c/c++-->Cide Generation-->Runtime Library( 　　Multi-threaded DLL (/MD)　　|　　Multi-threaded Debug (/MTd)  等)
  
-C#项目使用
-引用Google.Protobuf.dll        protobuf 源包中C#项目生成的DLL（需要打开项目自己编译生成）
+C# 项目使用
+引用 Google.Protobuf.dll protobuf 源包中C#项目生成的DLL（需要打开项目自己编译生成）
 
 **相关链接**  
 [Windows 安装 Protobuf](http://www.cnblogs.com/grayguo/articles/5431856.html)

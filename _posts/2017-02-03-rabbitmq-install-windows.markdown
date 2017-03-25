@@ -3,6 +3,7 @@ layout: post
 title:  "Windows 环境下安装 RabbitMQ"
 date:   2017-02-03 14:00:00 +0800
 categories: rabbitmq
+tags: RabbitMQ
 ---
 RabbitMQ是一个在AMQP基础上完整的，可复用的企业消息系统。他遵循Mozilla Public License开源协议。
 

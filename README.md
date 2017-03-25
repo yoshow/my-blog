@@ -19,7 +19,7 @@ cd my-blog
 访问 http://localhost:4000 可以查看测试内容
 
 #### 结合 Github Pages 使用 Jekyll ####  
-进入GitRepo目录，键入git init命令，初始化一个git库。  
+进入 GitRepo 目录，键入 git init 命令，初始化一个git库。  
 <code>cd /Users/yoshow/</code>  
 将刚才在 Github 中创建的 Repo 克隆到你本地的Git库中，即刚在本地创建的 GitRepo 目录中。  
 <code>#git clone https://github.com/yoshow/my-blog</code>

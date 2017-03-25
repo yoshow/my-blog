@@ -3,7 +3,7 @@ layout: post
 title:  "URL 编码表"
 date:   2011-10-20 20:00:00 +0800
 categories: URL
-tags: url
+tags: URL
 ---
 
 <table style="border: none;" border="0" cellspacing="0" cellpadding="0">

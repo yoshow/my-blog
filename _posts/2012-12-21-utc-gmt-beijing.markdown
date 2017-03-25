@@ -2,8 +2,8 @@
 layout: post
 title:  "UTC 和 GMT 及 北京时间的关系"
 date:   2012-12-21 20:00:00 +0800
-categories: UTC
-tags: utc
+categories: utc
+tags: UTC
 ---
 **UTC**  
 协调世界时，又称世界标准时间或世界协调时间，简称UTC(从英文”Coordinated Universal Time”／法文”Temps Universel Cordonné”而来)，是最主要的世界时间标准，其以原子时秒长为基础，在时刻上尽量接近于格林尼治平时。中国大陆采用ISO 8601:2000的国家标准GB/T 7408-2005《数据元和交换格式 信息交换 日期和时间表示法》中亦称之为协调世界时。台湾采用CNS 7648的《资料元及交换格式–资讯交换–日期及时间的表示法》（与ISO 8601类似）称之为世界统一时间。

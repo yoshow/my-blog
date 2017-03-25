@@ -3,7 +3,7 @@ layout: post
 title:  "MySQL 设置注释信息"
 date:   2014-09-17 08:00:00 +0800
 categories: MySQL
-tags: mysql
+tags: MySQL
 ---
 
 #### 1 创建表的时候写注释

@@ -1,9 +1,8 @@
 ---
-layout: post
-title:  "URI 与 URL 的区别"
-date:   2009-08-04 20:00:00 +0800
-categories: URI
-tags: url
+layout : post
+title  : "URI 与 URL 的区别"
+date   : 2009-08-04 20:00:00 +0800
+tags   : URI URL
 ---
 **URI - Universal Resource Identifier**  
 统一资源标识符

@@ -3,7 +3,7 @@ layout: post
 title:  "Windows NTP 客户端时间同步设置"
 date:   2012-12-22 20:00:00 +0800
 categories: NTP Windows 
-tags: ntp
+tags: Windows NTP
 ---
 
 1. 开始=>运行输入 gpedit.msc

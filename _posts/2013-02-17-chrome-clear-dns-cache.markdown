@@ -3,6 +3,7 @@ layout: post
 title:  "Chrome 清除 DNS 缓存"
 date:   2013-02-17 20:00:00 +0800
 categories: Chrome
+tags: Chrome
 ---
 Chrome 会对域名的 DNS 解析进行缓存，一般重启 Chrome 可以清除 DNS 缓存。
 
