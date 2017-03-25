@@ -2,7 +2,6 @@
 layout: post
 title:  "Tornado 安装笔记"
 date:   2017-03-05 20:00:00 +0800
-categories: Python
 tags: Python Tornado
 ---
 

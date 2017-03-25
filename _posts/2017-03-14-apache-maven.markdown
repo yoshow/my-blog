@@ -1,9 +1,8 @@
 ---
 layout: post
-title:  "Maven 笔记"
-date:   2017-03-14 20:00:00 +0800
-categories: apache maven
-tags: apache maven
+title: "Maven 笔记"
+date: 2017-03-14 20:00:00 +0800
+tags: Apache Maven
 ---
 #### Maven常用命令 ####  
 
@@ -44,6 +43,11 @@ mvn compile
 **编译源代码并打成 war 包**  
 ```
 mvn compile war:war  
+```
+
+**编译源代码并打成 jar 包**  
+```
+mvn compile jar:jar  
 ```
 
 **编译测试代码**  
@@ -91,7 +95,7 @@ mvn eclipse:eclipse
 mvn eclipse:clean 
 ```
 
-**生成idea项目**  
+**生成 IDEA 项目**  
 ```
 mvn idea:idea  
 ```
@@ -244,8 +248,7 @@ mvn install:install-file
 
 **一般使用情况是这样，首先通过 cvs 或 svn 下载代码到本机，然后执行 mvn eclipse:eclipse 生成 Ecllipse 项目文件，然后导入到 Eclipse 就行了；修改代码后执行mvn compile 或 mvn test 检验，也可以下载 eclipse 的 maven 插件。**
 
-mvn -version/-v                                                   | 显示版本信息 
-mvn archetype:generate                                            | 创建mvn项目 
+mvn -version                                                      | 显示版本信息 
 mvn archetype:create -DgroupId=com.x3platform -DartifactId=myapp  | 创建mvn项目
 mvn package                                                       | 生成target目录，编译、测试代码，生成测试报告，生成jar/war文件 
 mvn jetty:run                                                     | 运行项目于jetty上, 

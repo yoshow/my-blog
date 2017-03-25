@@ -3,14 +3,14 @@ layout: post
 title:  "Visual Studio Code 配置"
 date:   2017-03-06 20:00:00 +0800
 categories: editor
-tags: editor visualstudio
+tags: ["Editor","Visual Studio Code"]
 ---
 
 我的配置
 
 **设置**  
 
-```javascript  
+{% highlight json%}  
 // 将设置放入此文件中以覆盖默认设置
 {
     "workbench.activityBar.visible": true,
@@ -65,7 +65,7 @@ tags: editor visualstudio
         "*.pyc": true
     }
 }
-```  
+{% endhighlight %}  
 
 **插件**
 - EditorConfig for VS Code

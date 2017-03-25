@@ -19,3 +19,7 @@ github_username:  yoshow
 markdown: kramdown
 
 theme: jekyll-theme-minimal
+
+# lunr search
+# lunr_search:
+#  excludes: [feed.xml]
