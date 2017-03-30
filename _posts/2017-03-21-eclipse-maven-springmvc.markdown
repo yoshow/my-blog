@@ -2,22 +2,35 @@
 layout: post
 title:  "Eclipse 构建 Spring MVC 项目"
 date: 2017-03-21 20:00:00 +0800
-categories: eclipse maven spring
 tags: Eclipse Maven Spring
 --- 
-   
+
+软件环境 Maven 3 + Eclipse 4.6   
+
 1.创建新的 Maven 项目
 
+{% highlight HTML %}
 mvn archetyp:create 
-  -DarchetypeArtifactId=maven-archetype-webapp
-  -DgroupId=com.x3platform 
-  -DartifactId=myapp
+    -DgroupId=com.x3platform 
+    -DartifactId=myapp
+{% endhighlight %}
 
 2.生成 Eclipse 项目
 
+{% highlight HTML %}
 mvn eclipse:eclipse
+{% endhighlight %}
 
-3.设置 Project Feats
+3.设置 Project Facets 和 Deployment Assembly
+用 eclipse 导入项目，打开项目属性
+
+设置 Project Facets 如下：
+
+![设置 Project Facets](/images/2017-03-21-eclipse-maven-springmvc/A.png)
+
+设置 Deployment Assembly 如下：
+
+![设置 Deployment Assembly](/images/2017-03-21-eclipse-maven-springmvc/B.png)
 
 4.赋予工程的 springmvc 特性
 
@@ -29,19 +42,30 @@ mvn eclipse:eclipse
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+    <servlet>
+        <servlet-name>myapp</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param> 
+            <param-name>contextConfigLocation</param-name> 
+            <param-value>classpath:spring/spring-servlet.xml</param-value> 
+        </init-param> 
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myapp</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <servlet>
-        <servlet-name>exam</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>exam</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+	<!-- 指定 Spring Bean 的配置文件所在目录。默认配置在 WEB-INF 目录下 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/spring-beans.xml</param-value>
+	</context-param>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -49,36 +73,62 @@ mvn eclipse:eclipse
 </web-app>
 {% endhighlight %}
 
-配置ContextLoaderListener表示，该工程要以spring的方式启动。启动时会默认在/WEB-INF 目录下查找 applicationContext.xml 作为 spring 容器的配置文件，这里可以初始化一些 bean，如 DataSource。我们这里什么也不做。代码如下：
-exam-servlet.xml
+配置 ContextLoaderListener 表示，该工程要以 spring 的方式启动。启动时会默认在 /WEB-INF 目录下查找 applicationContext.xml 作为 spring 容器的配置文件，这里可以初始化一些 bean，如 DataSource。我们这里什么也不做。代码如下：
 
+spring-beans.xml
 {% highlight XML %}
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Bean头部 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:mvc="http://www.springframework.org/schema/mvc" 
-    xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+</beans>
+{% endhighlight %}
+
+spring-servlet.xml
+{% highlight XML %}
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">      
+	<!-- 指定 Spring 的配置文件所在目录。默认配置在WEB-INF目录下 -->
+	<import resource="classpath:spring/applicationContext.xml"/>
+</beans>
+{% endhighlight %}
+
+applicationContext.xml
+{% highlight XML %}
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
     xmlns:util="http://www.springframework.org/schema/util"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd              
-            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd              
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
     
-    <!-- 激活@Controller模式 -->
+    <!-- 激活 @Controller 模式 -->
     <mvc:annotation-driven />
-    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
-    <context:component-scan base-package="cc.monggo.web.controller" />
 
+    <!-- 
+    /** 
+     * 会把 "/**" url,注册到 SimpleUrlHandlerMapping 的 urlMap 中,把对静态资源的访问由 HandlerMapping
+	 * 转到 org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler 处理并返回.
+	 * DefaultServletHttpRequestHandler 使用就是各个 Servlet 容器自己的默认 Servlet. 
+     */ -->
+    <mvc:default-servlet-handler/>
+    
+    <!-- 对包中的所有类进行扫描，以完成 Bean 创建和自动依赖注入的功能 需要更改 -->
+    <context:component-scan base-package="com.x3platform.web.controllers" />
+    
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-
+    
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/WEB-INF/jsp/</value>
+            <value>/WEB-INF/classes/views/</value>
         </property>
         <property name="suffix">
-            <value>.jsp</value>
+            <value>.html</value>
         </property>
     </bean>
 </beans>
@@ -109,21 +159,21 @@ exam-servlet.xml
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
-        <version>3.0.5.RELEASE</version>
+        <version>4.2.2.RELEASE</version>
     </dependency>
     
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
-        <version>3.0.5.RELEASE</version>
+        <version>4.2.2.RELEASE</version>
     </dependency>
-    
+
     <dependency>
-        <groupId>org.apache.geronimo.specs</groupId>
-        <artifactId>geronimo-servlet_2.5_spec</artifactId>
-        <version>1.2</version>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
     </dependency>
-            
   </dependencies>
   <build>
     <finalName>myapp</finalName>
@@ -133,11 +183,11 @@ exam-servlet.xml
 
 maven 就是这么简单，一旦保存，maven 就会自动下载 pom.xml 的 jar 包。此时可以看到目录中 Maven Dependencies下生成了 jar 包。
 
-　　更多的 jar 包可以在 maven 中心库下载：http://mvnrepository.com。
+更多的 jar 包可以在 maven 中心库下载：http://mvnrepository.com。
 
 6.测试代码
 
-　　说了一大堆，只有运行起来才有意思，下面写个简单的测试。先写Controller。编写两个类，LoginControler.java，LoginForm.java。代码如下：
+下面写个简单的测试。先写 Controller。编写两个类，LoginControler.java，LoginForm.java。代码如下：
 LoginController.java
 
 {% highlight Java %}

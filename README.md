@@ -21,30 +21,39 @@ cd my-blog
 #### 结合 Github Pages 使用 Jekyll ####  
 进入 GitRepo 目录，键入 git init 命令，初始化一个git库。  
 <code>cd /Users/yoshow/</code>  
+
 将刚才在 Github 中创建的 Repo 克隆到你本地的Git库中，即刚在本地创建的 GitRepo 目录中。  
-<code>#git clone https://github.com/yoshow/my-blog</code>
+```
+#git clone https://github.com/yoshow/my-blog
+```
 
 在 yoshow 文件夹中会看到名为 my-blog 的文件夹，这就是你从 Github 中克隆的Repo文件。
-Hello World，进入Repo目录中，创建一个 HTML 文件，名为index，内容为 “Hello World”。
-<code>cd /Users/yoshow/my-blog
-echo “Hello World” > index.html</code> 
 
-将创建的 index.html 文件 push 到 github 中 
-<code>cd /Users/yoshow/my-blog
+Hello World，进入Repo目录中，创建一个 HTML 文件，名为index，内容为 “Hello World”。 
+
+```
+cd /Users/yoshow/my-blog  
+echo "Hello World" > index.html
+```
+
+将创建的 index.html 文件 push 到 github 中  
+```
+cd /Users/yoshow/my-blog
 git add .
 git commit -m “Hello World update”
-git push</code>
+git push
+```
 
 在浏览器中访问 http://username.github.io ，你将会看到 index.html 文件中的内容，我们这里会显示“Hello World”。
-至此，基于 Github Pages 功能的个人站点就算搭建好了。
-在克隆到本地的Repo文件中，按照上述的 Jekyll 文件目录结构手动创建所需的文件资源，并上传。
-由于Github本身完美支持 Jekyll，所以只要符合Jekyll的文件目录，Github 就自动使用 Jekyll 解析形成页面。
+
+至此，基于 Github Pages 功能的个人站点就算搭建好了。在克隆到本地的Repo文件中，按照上述的 Jekyll 文件目录结构手动创建所需的文件资源，并上传。由于 Github 本身完美支持 Jekyll，所以只要符合 Jekyll 的文件目录，Github 就自动使用 Jekyll 解析形成页面。
 
 至此，我们应该有了一定的理解，这里我再简单梳理一下：
+
 Jekyll可以将我们使用markdown写的文章按照指定模板解析为html文件。
 Github Pages 可以充当我们的服务器，通过 username.github.io 可以访问到我们上传的 html 页面。
-Github Pages 完美支持Jekyll，所以不需要我们自己编写复杂的 html 页面，只要将 Jekyll 的目录结构上传至 Github 中，
-就可以通过 username.github.io 访问由Jekyll解析生成的html页面，从而形成了个人网站。
+
+Github Pages 完美支持 Jekyll，所以不需要我们自己编写复杂的 html 页面，只要将 Jekyll 的目录结构上传至 Github 中，就可以通过 username.github.io 访问由Jekyll解析生成的html页面，从而形成了个人网站。
 
 基本配置参见官方配置文档。 不同的模板，在该文件中的配置项也不一样，因为我自己使用了大师设计的模板，配置了如下参数（部分）：
 ```
@@ -87,6 +96,7 @@ print_hi('Tom')
 Check out the [Jekyll docs][jekyll]
 for more info on how to get the most
 ```
+
 #### 编写博文 ####  
 out of Jekyll. File all bugs/featur
 e requests at [Jekyll's GitHub repo]
