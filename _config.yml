@@ -20,6 +20,8 @@ markdown: kramdown
 
 theme: jekyll-theme-minimal
 
+baidu_tongji: 50ec37835e145af07441db70959c8575
+
 # lunr search
 # lunr_search:
 #  excludes: [feed.xml]
