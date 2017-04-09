@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll 入门指引"
 date:   2017-02-23 20:00:00 +0800
-categories: jekyll
+categories: Jekyll
 ---
 **注：这里默认安装环境已具备Ruby、RubyGems环境。**
 

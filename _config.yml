@@ -20,6 +20,7 @@ markdown: kramdown
 
 theme: jekyll-theme-minimal
 
+# Baidu TongJi Baidu
 baidu_tongji: 50ec37835e145af07441db70959c8575
 
 # lunr search

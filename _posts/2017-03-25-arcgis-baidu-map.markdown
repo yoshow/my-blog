@@ -2,7 +2,7 @@
 layout: post
 title:  "ArcGIS Server 加载百度地图"
 date: 2017-03-25 20:00:00 +0800
-tags: ArcGIS
+tags: ArcGIS Baidu
 --- 
 
 软件环境 ArcMap 10.1 + 太乐地图下载器 4.9
