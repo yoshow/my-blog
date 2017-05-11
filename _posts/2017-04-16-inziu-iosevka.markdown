@@ -28,3 +28,7 @@ HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont
 名称 93601 , 值 Inziu IosevkaCC Slab SC
 
 ![注册表效果图](/images/2017-04-16-inziu-iosevka/C.png)
+
+相关链接  
+[Iosevka 开源项目](https://github.com/be5invis/Iosevka/)  
+[Inziu Iosevka](https://be5invis.github.io/Iosevka/inziu.html)
