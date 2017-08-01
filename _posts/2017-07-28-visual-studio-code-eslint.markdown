@@ -13,7 +13,7 @@ npm install -g eslint@3.19.0
 
 #### 安装 ESLint 常用插件 ####  
 {% highlight HTML %}
-npm install -g eslint-friendly-formatter eslint-plugin-standard eslint-plugin-promise eslint-plugin-html
+npm install -g babel-eslint eslint-friendly-formatter eslint-plugin-standard eslint-config-standard eslint-plugin-promise eslint-plugin-html eslint-plugin-node eslint-plugin-import
 {% endhighlight %}
 
 #### Visual Sudio Code 安装 ESLint 插件 #### 
@@ -39,7 +39,7 @@ module.exports = {
   extends: 'standard',
   // required to lint *.vue files
   plugins: [
-    'html', 'requirejs'
+    'html'
   ],
   // 全局配置
   'globals': {
