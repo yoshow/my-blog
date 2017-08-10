@@ -4,6 +4,26 @@ title: "Maven 笔记"
 date: 2017-03-14 20:00:00 +0800
 tags: Apache Maven
 ---
+#### Maven环境变量 ####  
+
+Maven 有一个重要的文件 "settings.xml"，这个文件来源于 apache-maven-3.x.x/conf/ 目录下.
+
+里面设置了要放在 windows 下，默认位置
+
+Windows 7    C:\Users\用户名\.m2   
+Windows XP   C:\Documents and Settings\用户名\.m2 
+
+##### Maven环境变量设置方法 #####  
+
+设置 MAVEN_HOME 路径 
+
+MAVEN_HOME = D:/dev/apache-maven-3.x.x/
+
+##### Maven本地仓库设置方法 #####  
+
+修改"settings.xml"文件，在这个文件中找到<localRepository>D:/Java/.m2/</localRepository>这一行，进行修改。
+这一行代表了Maven的jar包仓库的位置。.m2目录下放的都是项目所用到的jar包，每个Project都可以共用一个work。
+
 #### Maven常用命令 ####  
 
 **查看 Maven 版本信息**  
