@@ -5,6 +5,12 @@ date: 2017-08-08 08:00:00 +0800
 tags: ["MySQL"]
 --- 
 
+#### 测试环境 ####   
+
+操作系统 CentOS 7.2  
+MySQL 5.7
+
+
 #### 安装 Xtrabackup ####   
 
 {% highlight bash %}
@@ -14,6 +20,15 @@ wget https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.4/\
 binary/redhat/7/x86_64/percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 
 yum localinstall percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
+{% endhighlight %}
+
+### 创建备份帐号 
+
+{% highlight SQL %}
+CREATE USER 'xtrabackup'@'localhost' IDENTIFIED BY 'xtra$password';
+GRANT SELECT, SHOW VIEW, RELOAD, LOCK TABLES, PROCESS, REPLICATION 
+CLIENT ON *.* TO 'xtrabackup'@'localhost';
+FLUSH PRIVILEGES;
 {% endhighlight %}
 
 #### 设置备份环境 ####  
@@ -35,9 +50,9 @@ vi /usr/local/xtrabackup/bash/mysql-base-backup
 #  use xtasback to fully backup mysql data per week!
 
 # 帐号
-user=root
+user=xtraback
 # 密码
-password=p@ssw0rd
+password=xtra@password
 # 需要备份的数据库
 # database=test_db
 # MySQL Socket File
@@ -88,9 +103,9 @@ vi /usr/local/xtrabackup/bash/mysql-incremental-backup
 #  use xtasback to incremental backup mysql data per week!
 
 # 帐号
-user=root
+user=xtraback
 # 密码
-password=p@ssw0rd
+password=xtra@password
 # 需要备份的数据库
 # MySQL Socket File
 defaults_file=/etc/my.cnf
@@ -134,9 +149,9 @@ vi /usr/local/xtrabackup/bash/mysql-incremental-merge
 #  use xtasback to incremental backup mysql data per week!
 
 # 帐号
-user=root
+user=xtraback
 # 密码
-password=p@ssw0rd
+password=xtra@password
 # 需要备份的数据库
 # MySQL Socket File
 defaults_file=/etc/my.cnf
@@ -176,7 +191,12 @@ crontab -e
 0 3 * * 0 /usr/local/xtrabackup/bash/mysql-base-backup. >/dev/null 2>&1
 #周一到周六凌晨3:00做增量备份
 0 3 * * 1-6 /usr/local/xtrabackup/bash/mysql-incremental-backup >/dev/null 2>&1
+#每个星期日凌晨4:00执行清理备份脚本
+0 4 * * 0 /usr/local/xtrabackup/bash/mysql-clear-backup. >/dev/null 2>&1
 {% endhighlight %}
+
+相关的源码  
+https://github.com/yoshow/percona-xtrabackup-scripts
 
 **相关链接**  
 [CentOS 安装 xTrabackup 2.4](https://www.percona.com/doc/percona-xtrabackup/2.4/installation/yum_repo.html)  
